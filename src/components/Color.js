@@ -8,8 +8,12 @@ function Color({ name, rgb, hex }) {
       <dt>Name</dt>
       <dd>{name}</dd>
 
-      <dt>RGB</dt>
-      <dd>{rgb ? rgb : 'unknown'}</dd>
+      <dt>R</dt>
+      <dd>{rgb ? rgb.r : 'unknown'}</dd>
+      <dt>G</dt>
+      <dd>{rgb ? rgb.g : 'unknown'}</dd>
+      <dt>B</dt>
+      <dd>{rgb ? rgb.b : 'unknown'}</dd>
 
       {hex && (
         <>
@@ -23,8 +27,12 @@ function Color({ name, rgb, hex }) {
 
 Color.propTypes = {
   name: PropTypes.string.isRequired,
-  rgb: PropTypes.string,
-  hex: PropTypes.string
+  rgb: PropTypes.shape({
+    r: PropTypes.number.isRequired,
+    g: PropTypes.number.isRequired,
+    b: PropTypes.number.isRequired 
+  }).isRequired,
+  hex: PropTypes.string.isRequired
 };
 
 export default Color;

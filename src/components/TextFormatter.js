@@ -5,7 +5,8 @@ export default class TextFormatter extends Component {
   state = {
     text: '',
     formattedText: '',
-    font: 'Banner'
+    font: 'Banner',
+    color: ''
   };
 
   handleSubmit = event => {
@@ -29,24 +30,29 @@ export default class TextFormatter extends Component {
     );
   };
 
+  handleColorChange = ({ target }) => {
+    this.setState({ color: target.value });
+  }
+  
   handleFontChange = ({ target }) => {
     this.setState({ font: target.value });
   }
 
-  
   render() {
 
     const fontArr = ['Ghost', 'Banner'];
     const mappedFonts = fontArr.map(font => {
       return <option key={font} value={font}>{font}</option>;
     });
-    const { text, formattedText, font } = this.state;
+
+    const { text, formattedText, font, color } = this.state;
     if(formattedText) {
       console.log(this.state);
     }
     return (
       <>
         <form onSubmit={this.handleSubmit}>
+          <input type="color" name="color" value={color} onChange={this.handleColorChange}></input>
           <select defaultValue={font} onChange={this.handleFontChange}>{mappedFonts}</select>
           <input
             name="text"
@@ -55,7 +61,8 @@ export default class TextFormatter extends Component {
             onChange={this.handleChange}
           />
         </form>
-        <pre>{formattedText}</pre>
+        <pre style={{ color: color } }>{formattedText}</pre>
+
       </>
     );
   }

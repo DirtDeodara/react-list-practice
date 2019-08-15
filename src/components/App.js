@@ -3,6 +3,7 @@ import Colors from './Colors';
 import PhotoAlbum from './PhotoAlbum';
 import Header from './Header';
 import Footer from './Footer';
+import TextFormatter from './TextFormatter';
 
 export default function App() {
   const colorsArr = [
@@ -34,10 +35,11 @@ export default function App() {
 
   return (
     <>
-      <Header />
+      {/* <Header />
       <Colors colorsArr={colorsArr} />
       <PhotoAlbum title={'Snails'} photosArr={photosArr}/>
-      <Footer />
+      <Footer /> */}
+      <TextFormatter />
     </>
   );
 }

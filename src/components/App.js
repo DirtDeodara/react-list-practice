@@ -1,6 +1,8 @@
 import React from 'react';
 import Colors from './Colors';
 import PhotoAlbum from './PhotoAlbum';
+import Header from './Header';
+import Footer from './Footer';
 
 export default function App() {
   const colorsArr = [
@@ -32,8 +34,10 @@ export default function App() {
 
   return (
     <>
+      <Header />
       <Colors colorsArr={colorsArr} />
       <PhotoAlbum title={'Snails'} photosArr={photosArr}/>
+      <Footer />
     </>
   );
 }

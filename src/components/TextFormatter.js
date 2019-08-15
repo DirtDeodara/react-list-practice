@@ -14,9 +14,9 @@ export default class TextFormatter extends Component {
     console.log(this.state);
   };
 
-  handleChange = ({ target }) => {
+  parseText = () => {
     figlet.text(
-      target.value,
+      this.state.text,
       {
         font: this.state.font
       },
@@ -25,17 +25,19 @@ export default class TextFormatter extends Component {
           console.log(err);
           return;
         }
-        this.setState({ [target.name]: target.value, formattedText: data });
+        this.setState({ formattedText: data });
       }
     );
-  };
+  }
 
   handleColorChange = ({ target }) => {
     this.setState({ color: target.value });
   }
   
-  handleFontChange = ({ target }) => {
-    this.setState({ font: target.value });
+  handleChange = ({ target }) => {
+    this.setState({ [target.name]: target.value }, () => {
+      this.parseText();
+    });
   }
 
   render() {
@@ -53,7 +55,7 @@ export default class TextFormatter extends Component {
       <>
         <form onSubmit={this.handleSubmit}>
           <input type="color" name="color" value={color} onChange={this.handleColorChange}></input>
-          <select defaultValue={font} onChange={this.handleFontChange}>{mappedFonts}</select>
+          <select name="font" defaultValue={font} onChange={this.handleChange}>{mappedFonts}</select>
           <input
             name="text"
             value={text}

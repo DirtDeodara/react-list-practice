@@ -1,21 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function WaterInput({ text, handleChange, handleSubmit }) {
+function Input({ number, handleChange, handleSubmit }) {
   return (
     <form onSubmit={handleSubmit}>
-      <label name="text">Drink some water, dude.
-        <input placeholder="input number of ounces drank." onChange={handleChange} value={text} name="text" type="text" />
+      <label name="text">
+        Drink some water, dude.
+        <input
+          placeholder="input number of ounces drank."
+          onChange={handleChange}
+          value={number}
+          name="text"
+          type="number"
+        />
       </label>
-      <button></button>
+      <button />
     </form>
   );
 }
 
-WaterInput.propTypes = {
-  text: PropTypes.string.isRequired,
+Input.propTypes = {
+  number: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired
 };
 
-export default WaterInput;
+export default Input;
